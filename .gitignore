@@ -15,7 +15,4 @@ dependency-reduced-pom.xml
 */.idea/**
 */target/**
 workspace.xml
-spark-batch/src/main/java/
-spark-batch/src/test/
 spark-warehouse/
-src/

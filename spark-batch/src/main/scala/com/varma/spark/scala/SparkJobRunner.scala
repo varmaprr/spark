@@ -30,7 +30,7 @@ object SparkJobRunner {
       val writerConfig: HdfsWriterConfig = ConfigType.hdfsWriter.getObj(config.getConfig("application.hdfsWriter")).asInstanceOf[HdfsWriterConfig];
       val grokParserConfig: GrokParserConfig = ConfigType.grokparser.getObj(config.getConfig("application.grokParser")).asInstanceOf[GrokParserConfig];
 
-      LOG.info("configuration loaded!! ");
+      LOG.info("configurations are loaded!! ");
 
       LOG.info("Spark process is running... hold on !!");
 
@@ -49,7 +49,7 @@ object SparkJobRunner {
       LOG.info("Spark process completed, enjoy :) !!");
     }
     catch {
-      case e: Exception => LOG.error(e.getMessage);
+      case e: Exception => LOG.error("Failed due to exception "+e.printStackTrace());
     }
   }
 
