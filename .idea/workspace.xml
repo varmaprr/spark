@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="220a386c-f2d9-4d45-a7d0-bcca7b2822ae" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spark-batch/src/main/scala/com/varma/spark/scala/GrokParser.scala" afterPath="$PROJECT_DIR$/spark-batch/src/main/scala/com/varma/spark/scala/GrokParser.scala" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -673,7 +670,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529857621842</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="commit first">
+      <created>1529858642893</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1529858642894</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
