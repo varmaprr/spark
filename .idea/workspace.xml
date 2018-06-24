@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="220a386c-f2d9-4d45-a7d0-bcca7b2822ae" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spark-batch/target/classes/com/varma/spark/utils/Record$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spark-batch/target/classes/com/varma/spark/utils/Record.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spark-batch/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spark-batch/target/spark-scala-batch-1.0-SNAPSHOT.jar" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -773,7 +769,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529857595381</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit first">
+      <created>1529857606644</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1529857606644</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
