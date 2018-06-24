@@ -12,3 +12,4 @@ test-output
 *.iml
 **\*.class
 dependency-reduced-pom.xml
+**/.idea/*

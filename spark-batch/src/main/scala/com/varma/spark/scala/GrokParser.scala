@@ -1,7 +1,6 @@
 package com.varma.spark.scala
 
 import java.util
-import java.util.Map
 
 import collection.JavaConversions._
 import com.google.common.io.Resources
