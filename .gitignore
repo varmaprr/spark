@@ -1,0 +1,14 @@
+# Created by .ignore support plugin (hsz.mobi)
+Jarfile*
+.classpath
+.settings
+.project
+target
+classes
+build
+test-output
+.surefire-*
+*.idea
+*.iml
+**\*.class
+dependency-reduced-pom.xml

@@ -8,8 +8,7 @@ import com.google.common.io.Resources
 import com.varma.spark.conf.{GrokParserConfig, IConfig}
 import com.varma.spark.utils.Record
 import io.krakens.grok.api.{Grok, GrokCompiler, Match}
-import main.scala.com.varma.spark.scala.SparkJobRunner
-import org.apache.spark.sql.{DataFrame, Row}
+import org.apache.spark.sql.DataFrame
 import org.slf4j.LoggerFactory
 
 /**
@@ -17,7 +16,7 @@ import org.slf4j.LoggerFactory
   */
 class GrokParser(conf: IConfig, df: DataFrame) extends Serializable {
 
-  val LOG = LoggerFactory.getLogger(SparkJobRunner.getClass);
+  val LOG = LoggerFactory.getLogger(getClass.getName);
 
   val grokParser: GrokParserConfig = conf.asInstanceOf[GrokParserConfig];
 

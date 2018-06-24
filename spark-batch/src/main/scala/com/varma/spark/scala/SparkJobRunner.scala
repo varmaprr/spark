@@ -15,7 +15,7 @@ import scala.collection.JavaConversions._
   */
 object SparkJobRunner {
 
-  val LOG = LoggerFactory.getLogger(SparkJobRunner.getClass);
+  val LOG = LoggerFactory.getLogger(getClass.getName);
 
   def main(args: Array[String]): Unit = {
 
@@ -30,10 +30,6 @@ object SparkJobRunner {
       val writerConfig: HdfsWriterConfig = ConfigType.hdfsWriter.getObj(config.getConfig("application.hdfsWriter")).asInstanceOf[HdfsWriterConfig];
       val grokParserConfig: GrokParserConfig = ConfigType.grokparser.getObj(config.getConfig("application.grokParser")).asInstanceOf[GrokParserConfig];
 
-      val patternFile = Resources.getResource(grokParserConfig.patternFile).getPath;
-
-      LOG.info(patternFile);
-
       LOG.info("configuration loaded!! ");
 
       LOG.info("Spark process is running... hold on !!");
@@ -44,13 +40,13 @@ object SparkJobRunner {
 
       val sparkSession = spark.getOrCreate();
 
-      var df = sparkSession.read.format("text").load(readerConfig.path).toDF("name");
+      var df = sparkSession.read.format("text").load(Resources.getResource(readerConfig.path).getPath).toDF("name");
 
       LOG.info(df.printSchema().toString);
 
       df = new GrokParser(grokParserConfig, df).apply();
 
-      df.write.mode(writerConfig.mode).format(Formatter.valueOf(writerConfig.codec).toString).save(writerConfig.path);
+      df.write.mode(writerConfig.mode).format(Formatter.valueOf(writerConfig.codec).toString).save(Resources.getResource(writerConfig.path).getPath);
 
       LOG.info("Spark process completed, enjoy :) !!");
     }
@@ -60,3 +56,4 @@ object SparkJobRunner {
   }
 
 }
+git sta
