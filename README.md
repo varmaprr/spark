@@ -30,7 +30,7 @@ To build
 mvn install
 ```
 
-Steps to setup run in intellij
+Steps to setup and run spark-batch in intellij
 
 ## Running in local
 
