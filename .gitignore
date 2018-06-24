@@ -10,7 +10,12 @@ test-output
 .surefire-*
 *.idea
 *.iml
-**\*.class
+**/*.class
 dependency-reduced-pom.xml
-**/.idea/*
+*/.idea/**
+*/target/**
 workspace.xml
+spark-batch/src/main/java/
+spark-batch/src/test/
+spark-warehouse/
+src/
