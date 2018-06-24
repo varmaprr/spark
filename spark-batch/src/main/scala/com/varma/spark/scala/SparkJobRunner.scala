@@ -40,13 +40,11 @@ object SparkJobRunner {
 
       val sparkSession = spark.getOrCreate();
 
-      var df = sparkSession.read.format("text").load(Resources.getResource(readerConfig.path).getPath).toDF("name");
-
-      LOG.info(df.printSchema().toString);
+      var df = sparkSession.read.format("text").load(Resources.getResource(readerConfig.path).getPath).toDF("message");
 
       df = new GrokParser(grokParserConfig, df).apply();
 
-      df.write.mode(writerConfig.mode).format(Formatter.valueOf(writerConfig.codec).toString).save(Resources.getResource(writerConfig.path).getPath);
+      df.write.mode(writerConfig.mode).format(Formatter.valueOf(writerConfig.codec).toString).save(writerConfig.path);
 
       LOG.info("Spark process completed, enjoy :) !!");
     }
@@ -56,4 +54,3 @@ object SparkJobRunner {
   }
 
 }
-git sta

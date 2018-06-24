@@ -24,7 +24,7 @@ class GrokParser(conf: IConfig, df: DataFrame) extends Serializable {
 
     import df.sparkSession.implicits._;
 
-    return df.as[Record].map(record => applyToRow(record.name, record)).toDF();
+    return df.as[Record].map(record => applyToRow(record.message, record)).toDF();
   }
 
   def applyToRow(str: String, record: Record): Record = {

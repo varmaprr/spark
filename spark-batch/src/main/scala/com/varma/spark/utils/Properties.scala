@@ -5,4 +5,4 @@ package com.varma.spark.utils
   */
 case class Properties(key: String, value: String)
 
-case class Record(name: String);
+case class Record(message: String);
