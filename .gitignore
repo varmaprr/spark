@@ -13,3 +13,4 @@ test-output
 **\*.class
 dependency-reduced-pom.xml
 **/.idea/*
+workspace.xml
