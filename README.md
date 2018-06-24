@@ -35,13 +35,11 @@ Steps to setup run in intellij
 ## Running in local
 
 ```
-Download and store winutils.exe in local folder EX: C:\hadooop\bin.
+Download and store winutils.exe in local folder EX: C:\hadoop\bin.
 
-set HADOOP_HOME = C:\hadooop\;
+set HADOOP_HOME = C:\hadoop\;
 
 update PATH = %PATH%;%HADOOP_HOME%\bin;
-
-Add winutils.exe
 
 clone this repo and open in intellij
 
