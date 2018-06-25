@@ -8,13 +8,13 @@ import com.varma.spark.conf.{GrokParserConfig, IConfig}
 import com.varma.spark.utils.{NewRecord, Record}
 import io.krakens.grok.api.{Grok, GrokCompiler, Match}
 import org.apache.spark.sql.types.{DataTypes, Metadata, StructField, StructType}
-import org.apache.spark.sql.{DataFrame, Row, RowFactory}
+import org.apache.spark.sql.{DataFrame, Row, RowFactory, SparkSession}
 import org.slf4j.LoggerFactory
 
 /**
   * Created by varma on 6/24/2018.
   */
-class GrokParser(conf: IConfig, df: DataFrame) extends Serializable {
+class GrokParser(conf: IConfig, df: DataFrame, session: SparkSession) extends Serializable {
 
   val LOG = LoggerFactory.getLogger(getClass.getName);
 
@@ -24,12 +24,17 @@ class GrokParser(conf: IConfig, df: DataFrame) extends Serializable {
 
     import df.sparkSession.implicits._;
 
-    val x = df.as[Record].map(record => applyToRow(record.message, record));
+    val schema: StructType = new StructType().add("MONTH", DataTypes.StringType, false).
+      add("COMMONAPACHELOG", DataTypes.StringType, false).
+      add("auth", DataTypes.StringType, false).
+      add("HOUR", DataTypes.StringType, false);
 
-    return x.toDF();
+    val x = df.rdd.map(record => applyToRow(record));
+
+    return session.createDataFrame(x, schema);
   }
 
-  def applyToRow(str: String, record: Record): NewRecord = {
+  def applyToRow(record: Row): Row = {
 
     val compiler = GrokCompiler.newInstance();
     compiler.registerDefaultPatterns();
@@ -37,19 +42,11 @@ class GrokParser(conf: IConfig, df: DataFrame) extends Serializable {
     compiler.register("foo", "%{COMMONAPACHELOG}")
 
     val grok: Grok = compiler.compile("%{foo}")
-    val `match`: Match = grok.`match`(str)
+    val `match`: Match = grok.`match`(record.toString())
     val map: util.Map[String, AnyRef] = `match`.capture
-    //val tuple = map.map(e => e._2);
 
-    //RowFactory.create(tuple);
-
-    return NewRecord(MONTH  = map.getOrDefault("MONTH","").toString,auth  = map.getOrDefault("auth","").toString,
-      HOUR  = map.getOrDefault("HOUR","").toString, ident  = map.getOrDefault("ident","").toString, foo  = map.getOrDefault("foo","").toString, verb  = map.getOrDefault("verb","").toString,
-      TIME  = map.getOrDefault("TIME","").toString,INT  = map.getOrDefault("INT","").toString,
-      YEAR  = map.getOrDefault("YEAR","").toString,response  = map.getOrDefault("response","").toString,bytes  = map.getOrDefault("bytes","").toString,
-      clientip  = map.getOrDefault("clientip", "").toString,MINUTE  = map.getOrDefault("MINUTE","").toString,SECOND  = map.getOrDefault("SECOND", "").toString) ;
-
-
+    RowFactory.create(map.getOrDefault("MONTH", "").toString, map.getOrDefault("auth", "").toString,
+      map.getOrDefault("HOUR", "").toString, map.getOrDefault("ident", "").toString);
   }
 
 }

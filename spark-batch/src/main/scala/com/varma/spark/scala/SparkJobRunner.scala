@@ -42,7 +42,7 @@ object SparkJobRunner {
 
       var df = sparkSession.read.format("text").load(Resources.getResource(readerConfig.path).getPath).toDF("message");
 
-      df = new GrokParser(grokParserConfig, df).apply();
+      df = new GrokParser(grokParserConfig, df, sparkSession).apply();
 
       df.write.mode(writerConfig.mode).format(Formatter.valueOf(writerConfig.codec).toString).save(writerConfig.path);
 
